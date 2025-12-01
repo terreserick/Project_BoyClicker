@@ -2,15 +2,14 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from math import floor
-import pygame, project_boyclicker.bk_events_screen, project_boyclicker.bk_visuals, project_boyclicker.bk_gmvars
-from project_boyclicker.bk_gmvars import ajust_scale, valores_base
-from project_boyclicker.bk_visuals import draw_buttons
+import pygame, bk_events_screen, bk_visuals, bk_gmvars
+from bk_gmvars import ajust_scale, valores_base
 
 #iniciação do pygame
 pygame.init()
 
 #variaveis do jogo
-pontos, clickes, click_boost,click_mult,auto_value,auto_mult,click_expo,auto_expo, ultimo_intervalo, tempo = project_boyclicker.bk_gmvars.config_sis_vars()
+pontos, clickes, click_boost,click_mult,auto_value,auto_mult,click_expo,auto_expo, ultimo_intervalo, tempo = bk_gmvars.config_sis_vars()
 
 # vars de custo base
 up_1, up_2, up_3, up_4, up_5, up_6 = valores_base()
@@ -23,14 +22,14 @@ quant_mult_click, quant_expo_click, quant_mult_clicker, quant_expo_clicker = 0, 
 
 
 # Setups
-tela = project_boyclicker.bk_events_screen.tela_settings()
+tela = bk_events_screen.tela_settings()
 timer = pygame.time.Clock()
-imagens_visual, imagens_botoes = project_boyclicker.bk_visuals.setup_images()
+imagens_visual, imagens_botoes = bk_visuals.setup_images()
 
 # configs
-botoes = project_boyclicker.bk_visuals.config_buttons(imagens_botoes)
-visuais = project_boyclicker.bk_visuals.config_visuals(imagens_visual)
-fontes = project_boyclicker.bk_visuals.setup_fonts()
+botoes = bk_visuals.config_buttons(imagens_botoes)
+visuais = bk_visuals.config_visuals(imagens_visual)
+fontes = bk_visuals.setup_fonts()
 
 rodando = True
 clicked = False
@@ -119,27 +118,27 @@ while rodando:
 
     tela.fill((255,255,255))
 
-    draw_buttons(tela, repo_images, botoes)
-    project_boyclicker.bk_visuals.draw_visuals(tela,imagens_visual, visuais)
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[0], f'Pontos {pontos}', 140, 50, (110, 239, 242))
+    bk_visuals.draw_buttons(tela, repo_images, botoes)
+    bk_visuals.draw_visuals(tela,imagens_visual, visuais)
+    bk_visuals.draw_text(tela, fontes[0], f'Pontos {pontos}', 140, 50, (110, 239, 242))
     # 1
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[1], 'Clicker +1' , 1300, 40, (0,0,0))
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_1}', 1310, 60 , (0,0,0))
+    bk_visuals.draw_text(tela, fontes[1], 'Clicker +1' , 1300, 40, (0,0,0))
+    bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_1}', 1310, 60 , (0,0,0))
     # 2
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[1], 'Clicker Mult +0.3', 1250, 185, (0, 0, 0))
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_2}', 1275, 205, (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[1], 'Clicker Mult +0.3', 1250, 185, (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_2}', 1275, 205, (0, 0, 0))
     # 3
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[1], 'AutoClicker +1', 1275, 330, (0, 0, 0))
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_3}', 1300, 350  , (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[1], 'AutoClicker +1', 1275, 330, (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_3}', 1300, 350  , (0, 0, 0))
     # 4
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[1], 'AutoClicker Mult +0.2', 1250, 470, (0, 0, 0))
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_4}', 1275, 490, (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[1], 'AutoClicker Mult +0.2', 1250, 470, (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_4}', 1275, 490, (0, 0, 0))
     # 5
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[1], 'Clicker expo +0.01', 1275, 615, (0, 0, 0))
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_5}', 1275, 635, (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[1], 'Clicker expo +0.01', 1275, 615, (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_5}', 1275, 635, (0, 0, 0))
     # 6
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[1], 'autoClicker expo +0.01', 1275, 760, (0, 0, 0))
-    project_boyclicker.bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_6}', 1275, 780, (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[1], 'autoClicker expo +0.01', 1275, 760, (0, 0, 0))
+    bk_visuals.draw_text(tela, fontes[2], f' Valor {valor_up_6}', 1275, 780, (0, 0, 0))
 
     print(valor_click, auto_value)
 
